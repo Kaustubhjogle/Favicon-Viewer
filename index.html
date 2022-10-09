@@ -37,6 +37,9 @@
                 var h2 = "http://";
                 urltxt=urltxt.replace(h1,"");
                 urltxt=urltxt.replace(h2,"");
+                if(urltxt.charAt(urltxt.length - 1)=="/"){
+                    urltxt=urltxt.substring(0,urltxt.length-1);
+                }
                 disp.src=ddgapi+urltxt+".ico";
             }
             else if(size=="notselect"){
@@ -60,10 +63,10 @@
                 <input type="text" placeholder="Enter the Website's Url" id="urlip" class="items"><br>
                 <select name="Size Options" id="sizeip" class="items">
                     <option value="notselect">Select desired Size</option>
-                    <option value="16">16 x 16</option>    
-                    <option value="32">32 x 32</option>    
-                    <option value="64">64 x 64</option>    
-                    <option value="128">128 x 128</option>    
+                    <option value="16">16 x 16 </option>    
+                    <option value="32">32 x 32 </option>    
+                    <option value="64">64 x 64 </option>    
+                    <option value="128">128 x 128 </option>    
                 </select><br>
                 <!-- <input type="submit" value="View" class="items" onClick="on()"> -->
                 <a onClick="on()"><button class="bn29">View</button></a>
