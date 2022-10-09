@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Viewer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script type="text/javascript">
+        function on(){
+            var urltxt=document.getElementById("urlip").value;
+            if(urltxt==""){
+                alert("Please Enter the Url");
+            }
+            else if(urltxt!=="" && isValidurl(urltxt)==true){
+                display();
+     
+            }
+            else{
+                alert("Enter Valid Url");
+            }
+        }
+        
+        function display(){
+            var urltxt=document.getElementById("urlip").value;
+            var size=document.getElementById("sizeip").value;
+            var disp=document.getElementById("displayimg");
+            var ddgapi="https://icons.duckduckgo.com/ip3/";
+            var gapi="https://s2.googleusercontent.com/s2/favicons?domain=";
+            if(size=="16"){
+                var h1 = "https://";
+                var h2 = "http://";
+                urltxt=urltxt.replace(h1,"");
+                urltxt=urltxt.replace(h2,"");
+                disp.src=ddgapi+urltxt+".ico";
+            }
+            else if(size=="notselect"){
+                alert("Select the Favicon Size")
+            }
+            else{
+                disp.src=gapi+urltxt+"&sz="+size;
+            } 
+        }
+
+        function isValidurl(string){
+            var res=string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+            return (res!=null)
+        }
+    </script>
+    <div class="maincontent">
+        <div class="grid">
+            <h2 align="center" class="items">Favicon Viewer</h2>
+            <center>
+                <img src="" id="displayimg" class="items"><br>
+                <input type="text" placeholder="Enter the Website's Url" id="urlip" class="items"><br>
+                <select name="Size Options" id="sizeip" class="items">
+                    <option value="notselect">Select desired Size</option>
+                    <option value="16">16 x 16</option>    
+                    <option value="32">32 x 32</option>    
+                    <option value="64">64 x 64</option>    
+                    <option value="128">128 x 128</option>    
+                </select><br>
+                <!-- <input type="submit" value="View" class="items" onClick="on()"> -->
+                <a onClick="on()"><button class="bn29">View</button></a>
+            </center>
+        </div>
+    </div>
+
+</body>
+</html>
